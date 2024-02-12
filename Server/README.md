@@ -8,6 +8,10 @@ This Node.js API provides comprehensive authentication functionalities including
 
 The API leverages Node.js along with Express.js, a popular web framework for Node.js, to create a robust backend system. MongoDB is used as the database for storing user information and tasks. JSON Web Tokens (JWT) are employed for user authentication, enhancing security by securely transmitting information between parties as a JSON object. This approach eliminates the need for sessions stored on the server, reducing server load and improving scalability.
 
+![Screenshot 2024-02-12 232038](https://github.com/last-hop/last-hop/assets/85928582/68c0f3c9-9acf-4c48-8a47-22f3a025d678)
+![Screenshot 2024-02-12 231913](https://github.com/last-hop/last-hop/assets/85928582/a44464e8-5e81-4dad-952f-b50b4a68a487)
+![Screenshot 2024-02-12 231818](https://github.com/last-hop/last-hop/assets/85928582/634758db-409b-4fe3-959f-2f894800515b)
+
 
 ## Prerequisites
 
