@@ -7,6 +7,10 @@ This Flutter application provides authentication functionalities using Firebase 
 Firebase Authentication: Users can sign up using their name, email, and password, and sign in using their registered email and password. The app also includes a "Forget Password" option for password recovery, which sends a recovery link to the user's registered email.
 
 GitHub API Integration: The app fetches real-time user data and avatars from the GitHub API, allowing users to search for GitHub accounts based on their initials. As the user types in the search bar, a list of users with matching initials is displayed in real-time.
+![WhatsApp Image 2024-02-12 at 23 16 04_2a13008e](https://github.com/last-hop/last-hop/assets/85928582/1fc45c26-f2a3-43c0-8fe7-de377e7911ea)
+![WhatsApp Image 2024-02-12 at 23 16 04_4b8b8c39](https://github.com/last-hop/last-hop/assets/85928582/f42dc506-afe8-463c-9c6b-9fbfc5b0ff33)
+![WhatsApp Image 2024-02-12 at 23 16 04_36b59ea6](https://github.com/last-hop/last-hop/assets/85928582/2fb1f90e-1b81-46f5-a82d-72ebb274ef0a)
+![WhatsApp Image 2024-02-12 at 23 16 05_07ef64d5](https://github.com/last-hop/last-hop/assets/85928582/43264450-11d0-457b-8e6b-a4b26a9aee94)
 ## Usage
 
 Authentication
