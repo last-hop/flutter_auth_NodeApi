@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:auth_public_api/utils/color_utils.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -9,7 +10,8 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   List<dynamic> users = [];
-
+// declaring github free api  url to fetch data
+// we use State management to setup a secure and stable connection
   Future<void> fetchGitHubUsers(String searchTerm) async {
     final response = await http.get(
       Uri.parse('https://api.github.com/search/users?q=$searchTerm'),
@@ -23,51 +25,96 @@ class _HomeScreenState extends State<HomeScreen> {
       throw Exception('Failed to load users');
     }
   }
-
+//below build declare all the frontend of home layout
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('GitHub Users'),
-
-      ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextField(
-              onChanged: (value) {
-                fetchGitHubUsers(value);
-              },
-              decoration: InputDecoration(
-                hintText: 'Search GitHub users',
-                prefixIcon: Icon(Icons.search),
-                labelStyle: TextStyle(color: Colors.white.withOpacity(0.9)),
-                filled: true,
-                floatingLabelBehavior: FloatingLabelBehavior.never,
-                fillColor: Colors.white.withOpacity(0.3),
-                border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30.0),
-                    borderSide: const BorderSide(width: 0, style: BorderStyle.none)),
-
+      body: Container(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              hexStringToColor("#7393B3"),
+              hexStringToColor("#71797E"),
+            ],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+        ),
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.fromLTRB(5, 50, 0.8, 5),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30.0),
+                        color: Colors.white,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                        child: TextField(
+                          onChanged: (value) {
+                            fetchGitHubUsers(value);
+                          },
+                          decoration: InputDecoration(
+                            hintText: 'Search GitHub users',
+                            border: InputBorder.none,
+                            prefixIcon: Icon(Icons.search, color: Colors.green),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: 8.0),
+                  ElevatedButton(
+                    onPressed: () {
+                      // Perform search operation here
+                    },
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.green,
+                      onPrimary: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30.0),
+                      ),
+                    ),
+                    child: Text('Search'),
+                  ),
+                ],
               ),
             ),
-          ),
-          Expanded(
-            child: ListView.builder(
-              itemCount: users.length,
-              itemBuilder: (context, index) {
-                return ListTile(
-                  leading: CircleAvatar(
-                    backgroundImage: NetworkImage(users[index]['avatar_url']),
-                  ),
-                  title: Text(users[index]['login']),
-                );
-              },
+            Expanded(
+              child: ListView.builder(
+                itemCount: users.length,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      children: [
+                        CircleAvatar(
+                          radius: 30,
+                          backgroundImage: NetworkImage(users[index]['avatar_url']),
+                        ),
+                        SizedBox(width: 20),
+                        Expanded(
+                          child: Text(
+                            users[index]['login'],
+                            style: TextStyle(fontSize: 20, color: Colors.white),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
 }
+

@@ -1,7 +1,8 @@
 const User = require('../models/userModel');
 const ErrorResponse = require('../utils/errorResponse');
 
-
+//below function uses usermodel to push  data in mongoDB 
+// It verifies for any previous accounts registered for that email else create a New account 
 exports.signup = async ( req , res , next )=>{
   //  console.log("skdfsk",req.body);
     const { email }= req.body;
@@ -20,6 +21,9 @@ exports.signup = async ( req , res , next )=>{
         next(error);
     }
 }
+
+// Below function check for the registered user data for the email entered to login to account 
+// If found emial and user has its corressponding password then user is authenticated 
 
 
 exports.signin = async (req, res, next) => {
@@ -51,6 +55,9 @@ exports.signin = async (req, res, next) => {
         next(error);
     }
 }
+
+
+//JWT is used to encrypt the response in form of token whch allows to verify user and permit to access account .
 
 const sendTokenResponse = async (user, codeStatus, res) => {
     const token = await user.getJwtToken();

@@ -3,7 +3,9 @@ const router = express.Router();
 const { signup, signin, logout } = require('../controllers/authController');
 
 
-//auth routes
+//authentication routes for the Api 
+
+
 // /api/signup
 router.post('/signup', signup);
 // /api/signin

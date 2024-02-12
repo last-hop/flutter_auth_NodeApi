@@ -2,6 +2,9 @@ const mongoose =require('mongoose');
 const bcrypt = require('bcryptjs');
 const jwt= require('jsonwebtoken');
 
+
+// user schema below defines all the requirement and type of data that needs to be enter in the feilds 
+
 const userSchema = new mongoose.Schema({
     firstName:{
         type:String,
@@ -23,7 +26,7 @@ const userSchema = new mongoose.Schema({
         required:[true ,"Email is Required "],
         unique:true,
         match:[
-            /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+            /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,// verify hat appropriate email pattern is entered 
             "Please Enter a valid Email"
         ]
 
@@ -35,33 +38,7 @@ const userSchema = new mongoose.Schema({
         minlength:[6 ,"Password must have atleast 6 charracters"],
 
     },
-    // age:{
-    //     type:Number,
-    //     required:[true ,"Age is Required "],
-      
-    // },
-    // address:{
-    //     type:String,
-    //     trim:true,
-    //     required:[true ," Address is Required "],
-    //  },
-    //  proffession:{
-    //     type:String,
-    //     trim:true,
-    //     required:[true ," Proffesion is Required "],
-    //     maxlength:32,
-    //  },
-    //  gender:{
-    //     type:String,
-    //     trim:true,
-    //     required:[true ," Gender is Required "],
-    //     maxlength:6,
-    //  },
-
-    // role:{
-    //     type:Number,
-    //     default:0
-    // }
+   
 },{timesStamps:true})
 
 //encrypting password before saving

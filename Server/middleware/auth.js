@@ -21,10 +21,3 @@ exports.isAuthenticated = async(req , res , next )=>{
     }
 }
 
-// middleware for admin
-exports.isAdmin = async (req , res , next )=>{
-    if(req.user.role===0){
-        return next(new ErrorResponse("Access Denied , You must be Admin", 401));
-    }
-    next();
-}

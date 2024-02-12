@@ -14,26 +14,41 @@ class SignInScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<SignInScreen> {
+  // we use texteditingController on dynanmic data input in the feilds
+
   TextEditingController _passwordTextController = TextEditingController();
   TextEditingController _emailTextController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       body: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
             gradient: LinearGradient(colors: [
-              hexStringToColor("CB2B93"),
-              hexStringToColor("9546C4"),
-              hexStringToColor("5E61F4")
+              hexStringToColor("#7393B3"),
+              hexStringToColor("#71797E"),
+
             ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
         child: SingleChildScrollView(
           child: Padding(
+      // declare the padding
             padding: EdgeInsets.fromLTRB(
+
                 20, MediaQuery.of(context).size.height * 0.2, 20, 0),
-            child: Column(
+            child:
+            Column(
+
               children: <Widget>[
+                Text(
+                  'USER SIGIN',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold
+                  ),
+                ),
 
                 const SizedBox(
                   height: 30,
